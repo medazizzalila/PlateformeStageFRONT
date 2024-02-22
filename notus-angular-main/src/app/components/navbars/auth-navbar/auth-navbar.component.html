@@ -1,0 +1,91 @@
+<nav *ngIf="showNavbar" class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <a [routerLink]="['/']" class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
+        ESPRIT
+      </a>
+      <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" (click)="setNavbarOpen()">
+        <i class="text-white fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" [ngClass]="{ hidden: !navbarOpen, 'block rounded shadow-lg': navbarOpen }" id="example-navbar-warning">
+      
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-briefcase text-lg leading-lg mr-2"
+          ></i>
+          Offres de stages
+        </a>
+      </li>
+    </ul>
+
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-suitcase text-lg leading-lg mr-2"
+          ></i>
+          Offres d'emplois
+        </a>
+      </li>
+    </ul>
+ 
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-graduation-cap text-lg leading-lg mr-2"
+          ></i>
+          Formations
+        </a>
+      </li>
+    </ul>
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-calendar-alt text-lg leading-lg mr-2"
+          ></i>
+          Evénements
+        </a>
+      </li>
+    </ul>
+    
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-exclamation-triangle text-lg leading-lg mr-2"
+          ></i>
+          Réclamation
+        </a>
+      </li>
+    </ul>
+    </div>
+    <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+      <app-user-dropdown class="block"></app-user-dropdown>
+    </ul>
+  </div>
+</nav>
