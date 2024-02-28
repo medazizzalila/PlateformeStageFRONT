@@ -24,7 +24,10 @@ import { ReclamationsComponent } from "./views/admin/reclamations/reclamations.c
 import { OffresemploisComponent } from "./views/admin/offresemplois/offresemplois.component";
 import { FormationsComponent } from "./views/admin/formations/formations.component";
 import { EvenementsComponent } from "./views/admin/evenements/evenements.component";
-import { QaComponent } from "./views/admin/qa/qa.component";
+import { QaComponent } from "./components/qa/qa.component";
+import { QaAddComponent } from "./components/qa/qa-add/qa-add.component";
+import { QaUpdateComponent } from "./components/qa/qa-update/qa-update.component";
+import { QaFrontComponent } from "./components/qa-front/qa-front.component";
 
 const routes: Routes = [
   // admin views
@@ -40,9 +43,12 @@ const routes: Routes = [
       { path: "formations", component: FormationsComponent },
       { path: "evenements", component: EvenementsComponent },
       { path: "qa", component: QaComponent },
+      { path: "qa-add", component: QaAddComponent },
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
+      { path: 'qa-update/:id', component: QaUpdateComponent },
+      
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
@@ -54,12 +60,13 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
+      { path: 'qa', component: QaFrontComponent },
     ],
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "", component: LandingComponent },
-  
+  { path: 'qa', component: QaFrontComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 

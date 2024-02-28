@@ -1,0 +1,43 @@
+<app-index-navbar></app-index-navbar>
+<style>
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the container fills the height */
+}
+
+.qa-container {
+  position: relative;
+  z-index: 1; /* Ensure the Q&A section is above the background image */
+}
+
+/* Rest of your styles */
+
+</style>
+<div class="relative pt-16 pb-32 min-h-screen-75">
+  <div
+    class="absolute top-0 w-full h-full bg-center bg-cover"
+    style="
+      background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80');
+    "
+  >
+    <span
+      id="blackOverlay"
+      class="w-full h-full absolute opacity-75 bg-black"
+    ></span>
+    <div class="center-container">  
+      <div class="qa-container dark-bg">
+        <div *ngFor="let qa of qas" class="qa-item">
+          <div class="question" (click)="toggleResponse(qa)">
+            {{ qa.question }}
+          </div>
+          <div class="response" [ngClass]="{'show': qa.showResponse}">
+            {{ qa.reponse }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

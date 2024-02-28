@@ -1,0 +1,35 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="rounded-t bg-white mb-0 px-6 py-6">
+        <div class="text-center flex justify-between">
+            <div></div>
+            <h6 class="text-blueGray-700 text-xl font-bold">Modifier QA</h6>
+            <button type="button"  class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" data-dismiss="modal" aria-label="Close" [routerLink]="['/admin/qa']">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body text-center px-4 lg:px-10 py-10 pt-4">
+          <!-- Formulaire de mise à jour -->
+          <form [formGroup]="qaForm" (ngSubmit)="updateQA()" class="inline-block align-middle">
+            <div class="form-group mb-4">
+              <label for="question" style="display: block; margin-bottom: 10px;">Question</label>
+              <textarea formControlName="question" id="question" class="form-control" style="padding-left: 20px;" autoGrow></textarea>
+              <div *ngIf="qaForm.get('question').invalid && (qaForm.get('question').dirty || qaForm.get('question').touched)" class="text-red-500">
+                <div *ngIf="qaForm.get('question').errors.required">La question est requise.</div>
+                <div *ngIf="qaForm.get('question').errors.pattern">La question doit contenir au moins une lettre alphabétique.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="reponse" style="display: block; margin-bottom: 10px;">Réponse</label>
+              <textarea formControlName="reponse" id="reponse" class="form-control" style="padding-left: 20px;" autoGrow></textarea>
+              <div *ngIf="qaForm.get('reponse').invalid && (qaForm.get('reponse').dirty || qaForm.get('reponse').touched)" class="text-red-500">
+                <div *ngIf="qaForm.get('reponse').errors.required">La réponse est requise.</div>
+                <div *ngIf="qaForm.get('reponse').errors.pattern">La réponse doit contenir au moins un caractère alphanumérique.</div>
+              </div>
+            </div>
+            <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Mettre à jour</button>
+          </form>
+          
+          
+    </div>
+</div>

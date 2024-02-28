@@ -1,6 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
@@ -13,6 +18,11 @@ import { DashboardComponent } from "./views/admin/dashboard/dashboard.component"
 import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+import { QaComponent } from "./components/qa/qa.component";
+import { QaAddComponent } from "./components/qa/qa-add/qa-add.component";
+import { QaUpdateComponent } from "./components/qa/qa-update/qa-update.component";
+import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -47,6 +57,12 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { HttpClientModule } from "@angular/common/http";
+import { CommonModule } from '@angular/common';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ContenteditableModelDirective } from "./components/qa/contenteditableModel.component";
+import { QaFrontComponent } from "./components/qa-front/qa-front.component";
+
 
 @NgModule({
   declarations: [
@@ -83,9 +99,23 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     RegisterComponent,
     LandingComponent,
     ProfileComponent,
+    QaComponent,
+    QaAddComponent,
+    QaUpdateComponent,
+    QaFrontComponent,
+    ContenteditableModelDirective,
+    
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  exports: [
+    ContenteditableModelDirective
+  ],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule, FormsModule,MatFormFieldModule,
+    MatInputModule,MatButtonModule, ToastrModule.forRoot(),BrowserAnimationsModule, ReactiveFormsModule
+ ],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {}
