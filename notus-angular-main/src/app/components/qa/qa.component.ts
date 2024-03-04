@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
   selector: "app-qa",
@@ -7,39 +8,42 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class QaComponent implements OnInit {
-  
-  
   qas: any;
-  question: String;
-  reponse: String;
+  originalQas: any; // Store the original qas array
+  termeDeRecherche = '';
 
   constructor(private http: HttpClient) {}
+
+@ViewChild (MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
     this.fetchQAs();
   }
 
   fetchQAs() {
-    let response = this.http.get("http://localhost:8083/qa/");
-    response.subscribe((data) => this.qas = data);
+    this.http.get("http://localhost:8083/qa/")
+      .subscribe((data) => {
+        this.qas = data;
+        this.originalQas = data; // St,ore the original qas array
+      });
   }
 
-  
   deleteQA(id: number) {
-  this.http.delete(`http://localhost:8083/qa/delete/${id}`)
-    .subscribe((response: any) => { // Specify the response type as 'any'
-      console.log("QA supprimée avec succès");
-      // Actualiser les données QA après la suppression
-      this.fetchQAs();
-    });
-}
-loadQA(id: number) {
-  this.http.get(`http://localhost:8083/qa/${id}`)
-    .subscribe((qa: any) => {
-      this.question = qa.question;
-      this.reponse = qa.reponse;
-    });
-}
+    this.http.delete(`http://localhost:8083/qa/delete/${id}`)
+      .subscribe((response: any) => {
+        console.log("QA supprimée avec succès");
+        this.fetchQAs(); // Refresh the QAs after deletion
+      });
+  }
 
-
+  recherche() {
+    if (this.termeDeRecherche.trim() === '') {
+      this.qas = this.originalQas; // Reset to original qas array if search term is empty
+    } else {
+      this.qas = this.originalQas.filter((qa: any) =>
+        qa.question.includes(this.termeDeRecherche) || qa.reponse.includes(this.termeDeRecherche)
+      );
+    }
+  } 
+  
 }

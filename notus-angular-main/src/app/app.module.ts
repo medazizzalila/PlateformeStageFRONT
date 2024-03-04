@@ -23,7 +23,7 @@ import { QaAddComponent } from "./components/qa/qa-add/qa-add.component";
 import { QaUpdateComponent } from "./components/qa/qa-update/qa-update.component";
 import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
+import { MatPaginatorModule } from "@angular/material/paginator";
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
@@ -58,10 +58,17 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { HttpClientModule } from "@angular/common/http";
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ContenteditableModelDirective } from "./components/qa/contenteditableModel.component";
 import { QaFrontComponent } from "./components/qa-front/qa-front.component";
+import { ChatbotComponent } from "./components/chatbot/chatbot.component";
+import { ReclamationComponent } from "./components/reclamation/reclamation.component";
+import { OffrestravailComponent } from "./components/offrestravail/offrestravail.component";
+import { ReclamationAddComponent } from "./components/reclamation/reclamation-add/reclamation-add.component";
+import { OffrestravailAddComponent } from "./components/offrestravail/offrestravail-add/offrestravail-add.component";
+import { OffrestravailUpdateComponent } from "./components/offrestravail/offrestravail-update/offrestravail-update.component";
+import { ReclamationUpdateComponent } from "./components/reclamation/reclamation-update/reclamation-update.component";
 
 
 @NgModule({
@@ -104,16 +111,24 @@ import { QaFrontComponent } from "./components/qa-front/qa-front.component";
     QaUpdateComponent,
     QaFrontComponent,
     ContenteditableModelDirective,
-    
+    ChatbotComponent,
+    ReclamationComponent,
+    OffrestravailComponent,
+    ReclamationAddComponent,
+    OffrestravailComponent,
+    OffrestravailAddComponent,
+    OffrestravailUpdateComponent,
+    ReclamationUpdateComponent
   ],
   exports: [
     ContenteditableModelDirective
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule, FormsModule,MatFormFieldModule,
-    MatInputModule,MatButtonModule, ToastrModule.forRoot(),BrowserAnimationsModule, ReactiveFormsModule
+    MatInputModule,MatButtonModule, ToastrModule.forRoot(),BrowserAnimationsModule, ReactiveFormsModule,MatPaginatorModule
  ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DatePipe
   ],
   bootstrap: [AppComponent],
   

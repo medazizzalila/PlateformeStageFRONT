@@ -1,43 +1,113 @@
 <app-index-navbar></app-index-navbar>
-<style>
 
-.center-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Ensure the container fills the height */
-}
+<div class="split-container ">
+  <!-- Introduction -->
+  <div class="introduction">
+    <div class="introduction-head">
+      <h2><b>Q&A ESPACE STAGIAIRES</b></h2>
+    </div>
+    <p>Bienvenue dans notre page de questions et réponses dédiées à notre Espace Stagiaires ! Vous trouverez ci-dessous une compilation des questions les plus courantes accompagnées de leurs réponses. Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à solliciter notre chatbot ou à nous contacter directement</p>
+  </div>
 
-.qa-container {
-  position: relative;
-  z-index: 1; /* Ensure the Q&A section is above the background image */
-}
+  <!-- Image -->
+  <div class="image-container">
+    <img src="/assets/img/8e573715-89a4-4a42-b3b7-3b387c2d53d0.png" alt="Description de l'image">
+  </div>
+</div>
 
-/* Rest of your styles */
-
-</style>
-<div class="relative pt-16 pb-32 min-h-screen-75">
-  <div
-    class="absolute top-0 w-full h-full bg-center bg-cover"
-    style="
-      background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80');
-    "
-  >
-    <span
-      id="blackOverlay"
-      class="w-full h-full absolute opacity-75 bg-black"
-    ></span>
-    <div class="center-container">  
-      <div class="qa-container dark-bg">
-        <div *ngFor="let qa of qas" class="qa-item">
-          <div class="question" (click)="toggleResponse(qa)">
-            {{ qa.question }}
-          </div>
-          <div class="response" [ngClass]="{'show': qa.showResponse}">
-            {{ qa.reponse }}
-          </div>
+<!-- Content -->
+<div class="centered-content">  
+  <div class="table-wrapper" id="table-wrapper">
+    <!-- Loop through Q&A items -->
+    <div class="table-content">
+      <div *ngFor="let qa of qas" class="qa-item">
+        <div class="question" (click)="toggleResponse(qa)">
+          <span>{{ qa.question }}</span>
+          <!-- Add arrow icon for indicating the active state -->
+          <span class="arrow-icon">&#9660;</span>
+        </div>
+        <div class="response" [ngClass]="{'show': qa.showResponse}">
+          <span>{{ qa.reponse }}</span>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<img src="assets/img/screenshot.jpg" id="open-icon" (click)="openChatbot()" *ngIf="!showChatbot">
+<app-chatbot [showChatbot]="showChatbot" (onClose)="showChatbot = false"></app-chatbot>
+
+<style>
+ .table-wrapper {
+  width: 210mm; /* A4 paper width */
+  margin-top: 20mm; /* Margin at the top of the page */
+  margin-bottom: 20mm; /* Margin at the bottom of the page */
+  padding: 20px; /* Padding around the table */
+  background-color: #ffffff; /* Paper color */
+  border-radius: 10px; /* Rounded corners */
+  overflow: auto; /* Enable scrolling if content exceeds the page */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  display: flex;
+  flex-wrap: wrap; /* Content wraps to next line when it reaches the end of the page */
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qa-item {
+  flex: 1 1 300px; /* Adjust the width of the item */
+  margin: 10px; /* Add some margin between items */
+}
+
+.question, .response {
+  width: 100%; /* Make the question and response take full width */
+}
+
+.question {
+  cursor: pointer;
+  font-weight: bold; /* Change cursor to indicate clickable */
+  display: flex;
+  justify-content: space-between; /* Add spacing between text and arrow icon */
+}
+
+.response {
+  display: none; /* Initially hide the response */
+}
+
+.show {
+  display: block; /* Show the response when .show class is applied */
+}
+
+/* Your existing styles */
+.split-container {
+  display: flex;
+}
+
+.introduction {
+  flex: 1;
+  margin-top: 160px;     /* Adjusted margin */
+  margin-left: 120px;
+  padding: 50px;
+  justify-content:space-evenly;
+}
+
+
+.introduction-head {
+  margin-top: 0px; /* Adjusted margin */
+  margin-left: 200px;
+  
+}
+
+.image-container {
+  flex: 1;
+  margin-top: 70px; /* Adjusted margin */
+  padding: 20px; /* Added padding */
+}
+
+.image-container img {
+  max-width: 100%;
+}
+</style>

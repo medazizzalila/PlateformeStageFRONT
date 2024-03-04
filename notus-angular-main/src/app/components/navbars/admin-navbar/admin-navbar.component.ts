@@ -8,4 +8,5 @@ export class AdminNavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  
 }

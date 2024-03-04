@@ -1,0 +1,61 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="rounded-t bg-white mb-0 px-6 py-6">
+        <div class="text-center flex justify-between">
+            <div></div>
+            <h6 class="text-blueGray-700 text-xl font-bold">Modifier Offre de Travail</h6>
+            <button type="button" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" data-dismiss="modal" aria-label="Close" [routerLink]="['/admin/offres']">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body text-center px-4 lg:px-10 py-10 pt-4">
+        <!-- Formulaire de mise à jour -->
+        <form [formGroup]="offretravailForm" (ngSubmit)="updateOT()" class="inline-block align-middle">
+           <div class="form-group mb-4">
+              <label for="datedebut" style="display: block; margin-bottom: 10px;">Date de début</label>
+              <input formControlName="datedebut" id="datedebut" class="form-control" type="date">
+              <div *ngIf="offretravailForm.get('datedebut').invalid && offretravailForm.get('datedebut').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('datedebut').errors.required">La date de début est requise.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="datefin" style="display: block; margin-bottom: 10px;">Date de fin</label>
+              <input formControlName="datefin" id="datefin" class="form-control" type="date">
+              <div *ngIf="offretravailForm.get('datefin').invalid && offretravailForm.get('datefin').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('datefin').errors.required">La date de fin est requise.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="descrip" style="display: block; margin-bottom: 10px;">Description</label>
+              <textarea formControlName="descrip" id="descrip" class="form-control"></textarea>
+              <div *ngIf="offretravailForm.get('descrip').invalid && offretravailForm.get('descrip').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('descrip').errors.required">La description est requise.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="email" style="display: block; margin-bottom: 10px;">Email</label>
+              <input formControlName="email" id="email" class="form-control" type="email">
+              <div *ngIf="offretravailForm.get('email').invalid && offretravailForm.get('email').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('email').errors.required">L'email est requis.</div>
+                <div *ngIf="offretravailForm.get('email').errors.email">L'email doit être valide.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="num" style="display: block; margin-bottom: 10px;">Numéro</label>
+              <input formControlName="num" id="num" class="form-control" type="number">
+              <div *ngIf="offretravailForm.get('num').invalid && offretravailForm.get('num').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('num').errors.required">Le numéro est requis.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="societe" style="display: block; margin-bottom: 10px;">Société</label>
+              <input formControlName="societe" id="societe" class="form-control" type="text">
+              <div *ngIf="offretravailForm.get('societe').invalid && offretravailForm.get('societe').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('societe').errors.required">La société est requise.</div>
+              </div>
+            </div>
+          
+            <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Mettre à jour</button>
+        </form>
+    </div>
+</div>

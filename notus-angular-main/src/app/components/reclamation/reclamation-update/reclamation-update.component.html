@@ -1,0 +1,42 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="rounded-t bg-white mb-0 px-6 py-6">
+      <div class="text-center flex justify-between">
+        <div></div>
+        <h6 class="text-blueGray-700 text-xl font-bold">Modifier Réclamation</h6>
+        <button type="button" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" data-dismiss="modal" aria-label="Close" [routerLink]="['/admin/reclamation']">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+    <div class="modal-body text-center px-4 lg:px-10 py-10 pt-4">
+      <form [formGroup]="reclamationForm" (ngSubmit)="updateReclamation()" class="inline-block align-middle">
+        <div class="form-group mb-4">
+          <label for="contenu" style="display: block; margin-bottom: 10px;">Contenu</label>
+          <textarea formControlName="contenu" id="contenu" class="form-control" style="padding-left: 20px;"></textarea>
+          <div *ngIf="reclamationForm.get('contenu').invalid && reclamationForm.get('contenu').touched" class="text-red-500">
+            <div *ngIf="reclamationForm.get('contenu').errors.required">Le contenu est requis.</div>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="piece" style="display: block; margin-bottom: 10px;">Pièce</label>
+          <input formControlName="piece" id="piece" class="form-control" type="text">
+          <div *ngIf="reclamationForm.get('piece').invalid && reclamationForm.get('piece').touched" class="text-red-500">
+            <div *ngIf="reclamationForm.get('piece').errors.required">La pièce est requise.</div>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="staterec" style="display: block; margin-bottom: 10px;">État</label>
+          <select formControlName="staterec" id="staterec" class="form-control">
+            <option *ngFor="let state of staterecValues" [value]="state">{{ state }}</option>
+          </select>
+        </div>
+        <div class="form-group mb-4">
+          <label for="date" style="display: block; margin-bottom: 10px;">Date d'ajout</label>
+          <!-- Afficher la date par défaut mais désactivée -->
+          <input formControlName="date" id="date" class="form-control" type="text" disabled>
+        </div>
+        <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Mettre à jour</button>
+      </form>
+    </div>
+  </div>
+  

@@ -2,8 +2,11 @@
   <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
     <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
       <a [routerLink]="['/']" class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-        ESPRIT
+        <div class="logo-container">
+        <img src="/assets/img/pngwing.com.png" alt="Logo ESPRIT">
+      </div>
       </a>
+      
       <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" (click)="setNavbarOpen()">
         <i class="text-white fas fa-bars"></i>
       </button>
@@ -98,3 +101,9 @@
     </ul>
   </div>
 </nav>
+<style>
+  .logo-container {
+  width: 100px; /* Largeur souhaitée pour le logo */
+  height: auto; /* Hauteur automatique pour maintenir le ratio */
+}
+</style>
