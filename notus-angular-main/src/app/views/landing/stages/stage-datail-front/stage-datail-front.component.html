@@ -1,0 +1,80 @@
+<app-auth-navbar></app-auth-navbar>
+<title>Stage Details</title>
+<style>
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Stage Details Styles */
+    .stage-details {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .stage-details h3 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .detail {
+        margin-bottom: 15px;
+    }
+
+    .detail label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .detail span {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+
+<body>
+<div class="stage-details">
+    <h3>Stage Details</h3>
+    <div class="detail">
+        <label>Title:</label>
+        <span>{{ stage.title }}</span>
+    </div>
+    <div class="detail">
+        <label>Start Date:</label>
+        <span>{{ stage.datedebut | date:'longDate' }}</span>
+        </div>
+    <div class="detail">
+        <label>End Date:</label>
+        <span>{{ stage.datefin | date:'longDate' }}</span>
+    </div>
+    <div class="detail">
+        <label>Duration:</label>
+        <span>{{ stage.duration  }} Days</span>
+    </div>
+    <div class="detail">
+        <label>Email:</label>
+        <span>{{ stage.email }}</span>
+    </div>
+    <div class="detail">
+        <label>Number:</label>
+        <span>{{ stage.num }}</span>
+    </div>
+    <div class="detail">
+        <label>Subject:</label>
+        <span>{{ stage.sujet }}</span>
+    </div>
+</div>
+</body>

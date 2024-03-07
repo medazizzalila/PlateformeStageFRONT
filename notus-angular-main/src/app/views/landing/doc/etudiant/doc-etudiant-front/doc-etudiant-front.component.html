@@ -1,0 +1,74 @@
+<app-auth-navbar></app-auth-navbar>
+<title>Doc Details</title>
+<style>
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Stage Details Styles */
+    .stage-details {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .stage-details h3 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .detail {
+        margin-bottom: 15px;
+    }
+
+    .detail label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .detail span {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+
+<body>
+   
+<div class="stage-details">
+    <h3>Doc Details</h3>
+    <div class="detail">
+        <label>Id Societe:</label>
+        <span>{{ doc.id_societ }}</span>
+    </div>
+    
+    <div class="detail">
+        <label>Id Etudiant:</label>
+        <span>{{ this.id }}</span>
+    </div>
+    <div class="detail">
+        <label>Journal:</label>
+        <span>{{ doc.journal }}</span>
+    </div>
+    <div class="detail">
+        <label>Rapport:</label>
+        <span>{{ doc.rapport }}</span>
+    </div>
+    <div class="detail">
+        <label>Attestation:</label>
+        <span>{{ doc.attestation }}</span>
+    </div>
+</div>
+</body>

@@ -1,0 +1,125 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Add Font Awesome for icons -->
+  <style>
+      /* Global Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f8fafc;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Form Styles */
+      .search-bar {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1000;
+      }
+
+      .form-container {
+          max-width: 500px;
+          margin: 50px auto;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+      }
+
+      .form-title {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #333;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      .form-group label {
+          font-weight: bold;
+          display: block;
+          margin-bottom: 5px;
+          color: #555;
+      }
+
+      .form-group input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+          outline: none;
+          border-color: #007bff;
+      }
+
+      .btn {
+          display: inline-block;
+          background-color: #007bff;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+          background-color: #0056b3;
+      }
+  </style>
+</head>
+<body>
+ 
+
+  <div class="form-container">
+    <h2 class="form-title">Create Stage</h2>
+    <form  id="myForm" (submit)="validateForm($event)">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" [(ngModel)]="stage.title" name="form-title" placeholder="Enter title" required>
+        </div>
+        <div class="form-group">
+            <label for="datedebut">Start Date:</label>
+            <input type="date" id="datedebut" [(ngModel)]="stage.datedebut" name="datedebut" required>
+        </div>
+        <div class="form-group">
+            <label for="datefin">End Date:</label>
+            <input type="date" id="datefin" [(ngModel)]="stage.datefin" name="datefin" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" [(ngModel)]="stage.email" name="email" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+            <label for="num">Num:</label>
+            <input type="number" id="num" [(ngModel)]="stage.num" name="num" placeholder="Enter number" required>
+        </div>
+        <div class="form-group">
+            <label for="sujet">Subject:</label>
+            <textarea id="sujet" [(ngModel)]="stage.sujet" name="sujet" placeholder="Enter subject" rows="10" style="width: 101%;" required></textarea>
+        </div>
+        <!-- Add more form fields as needed -->
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#datedebut", {
+      enableTime: false,
+      dateFormat: "Y-m-d",
+  });
+
+  flatpickr("#datefin", {
+      enableTime: false,
+      dateFormat: "Y-m-d",
+  });
+</script>
+    
+</body>

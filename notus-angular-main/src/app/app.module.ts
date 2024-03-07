@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -47,6 +48,22 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { StageListComponent } from "./views/admin/stages/components/stage-list/stage-list.component";
+import { FormsModule} from '@angular/forms';
+import { CreateStageComponent } from "./views/admin/stages/components/create-stage/create-stage.component";
+import { UpdateStageComponent } from "./views/admin/stages/components/update-stage/update-stage.component";
+import { StageDetailsComponent } from "./views/admin/stages/components/stage-details/stage-details.component";
+import { FilterPipe } from "./views/admin/stages/components/stage-list/filter.pipe";
+import { StageFrontComponent } from "./views/landing/stages/stage-front-etudiant/stage-front.component";
+import { DocListComponent } from "./views/admin/Doc/components/doc-list/doc-list.component";
+import { CreateDocComponent } from "./views/admin/Doc/components/create-doc/create-doc.component";
+import { DocDetailsComponent } from "./views/admin/Doc/components/doc-details/doc-details.component";
+import { UpdateDocComponent } from "./views/admin/Doc/components/update-doc/update-doc.component";
+import { StageFrontSocieteComponent } from "./views/landing/stages/stage-front-societe/stage-list/stage-front-societe.component";
+import { UpdateStageSocieteComponent } from "./views/landing/stages/stage-front-societe/update-stage/update-stage.component";
+import { CreateStageSocieteComponent } from "./views/landing/stages/stage-front-societe/create-stage/create-stage.component";
+import { StageDatailFrontComponent } from "./views/landing/stages/stage-datail-front/stage-datail-front.component";
+import { DocEtudiantFrontComponent } from "./views/landing/doc/etudiant/doc-etudiant-front/doc-etudiant-front.component";
 
 @NgModule({
   declarations: [
@@ -78,13 +95,30 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     AuthComponent,
     MapsComponent,
     SettingsComponent,
+    StageListComponent,
     TablesComponent,
     LoginComponent,
     RegisterComponent,
     LandingComponent,
     ProfileComponent,
+    CreateStageComponent,
+    UpdateStageComponent,
+    StageDetailsComponent,
+    FilterPipe,
+    StageFrontComponent,
+    DocListComponent,
+    CreateDocComponent,
+    DocDetailsComponent,
+    UpdateDocComponent,
+    StageFrontSocieteComponent,
+    UpdateStageSocieteComponent,
+    CreateStageSocieteComponent,
+    StageDatailFrontComponent,
+    DocEtudiantFrontComponent
+    
+
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

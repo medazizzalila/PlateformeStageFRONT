@@ -1,0 +1,171 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage Details</title>
+  <style>
+     
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    .card-title {
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card-detail {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .card-button {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .card-button button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .card-button button:hover {
+      background-color: #c82333;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      padding: 0 20px;
+      
+    
+      justify-content: center;
+      align-items: center;
+      
+    }
+  </style>
+</head>
+
+<body>
+  <app-auth-navbar></app-auth-navbar>
+
+  <main>
+    <div
+    class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
+  >
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80');
+      "
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-75 bg-black"
+      ></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            <h1 class="text-white font-semibold text-5xl">
+              ESPRIT - Se former autrement
+            </h1>
+            <p class="mt-4 text-lg text-blueGray-200">
+              la seule école en tunisie associé à CGE, CDIO, AUF et UNESCO et acrédité EUR-ACE.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div
+      class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-blueGray-200 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="card">
+        <h2 class="card-title">Stage Title</h2>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by title..." (input)="searchStages()">
+
+      </div>
+      <div class="card">
+        <h2 class="card-title">Stage after date</h2>
+        <input type="date" [(ngModel)]="datedebut" (input)="search()">
+
+      </div>
+
+      <div *ngFor="let stage of stages" class="card" 
+      (click)="stageDetails(stage.idsatge)"
+      [ngStyle]="{ 'background-color': stage.isHovered ? 'lightgray' : 'inherit' }"
+   (mouseenter)="stage.isHovered = true"
+   (mouseleave)="stage.isHovered = false" >
+        <h3 class="card-title">{{ stage.title }}</h3>
+        <div class="card-detail"><strong>Sujet:</strong> {{ stage.sujet }}</div>
+        <div class="card-detail"><strong>Date début:</strong> {{ stage.datedebut | date:'yyyy-MM-dd' }}</div>
+        <div class="card-detail"><strong>Date fin:</strong> {{ stage.datefin | date:'yyyy-MM-dd' }}</div>
+        <div class="card-detail"><strong>Durée:</strong> {{ stage.duration }} Days</div>
+        <div class="card-detail"><strong>Email:</strong> {{ stage.email }}</div>
+        <div class="card-detail"><strong>Numéro:</strong> {{ stage.num }}</div>
+        <div class="card-button">
+          <button (click)="postulerAuStage(stage.idsociete) ; $event.stopPropagation()">Postuler</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#datedebut", {
+        enableTime: false,
+        dateFormat: "Y-m-d",
+    });
+  
+    flatpickr("#datefin", {
+        enableTime: false,
+        dateFormat: "Y-m-d",
+    });
+  </script>
+</body>

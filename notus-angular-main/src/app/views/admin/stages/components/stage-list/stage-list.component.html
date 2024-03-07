@@ -1,0 +1,80 @@
+<style>
+  form {
+    position: fixed;
+    top: 20px; /* Adjust this value to move the bar higher */
+    right: 150px;
+    z-index: 1000;
+  }
+  
+  input[type="text"] {
+    width: 250px; /* Adjust this value to make the input field shorter */
+  }
+</style>
+
+
+
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+  <div class="rounded-t bg-white mb-0 px-6 py-6">
+    <div class="text-center flex justify-between">
+      <h6 class="text-blueGray-700 text-xl font-bold">stage Details</h6>
+      <button (click) = "addStage()" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" >
+        Ajouter un stage
+      </button>
+      
+    </div>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by title..." (input)="searchStages()">
+
+  </div>
+  <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+
+    <table class="w-full mb-6">
+
+      <thead>
+        <tr>
+          <th class="px-4 py-2"></th>
+
+          <th class="px-4 py-2">Titre</th>
+          <th class="px-4 py-2">Datedebut <button class="bg-transparent border-none" (click)="sortStagesByStartDay()">
+            <i *ngIf="ascendingSort" class="fas fa-arrow-up"></i>
+            <i *ngIf="!ascendingSort" class="fas fa-arrow-down"></i>
+          </button></th>
+          <th class="px-4 py-2">datefin</th> <!-- Remove fixed width -->
+          <th class="px-4 py-2">email</th> <!-- Remove fixed width -->
+          <th class="px-4 py-2">num</th> <!-- Remove fixed width -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stage of stages let i = index">          
+          <td class="border px-4 py-2">{{ i + 1 }}</td>
+          <td class="border px-4 py-2">{{stage.title}}</td>
+
+          <td class="border px-4 py-2">{{ stage.datedebut | date:'yyyy-MM-dd' }}</td>
+          <td class="border px-4 py-2">{{ stage.datefin | date:'yyyy-MM-dd' }}</td>
+          <td class="border px-4 py-2">{{stage.duration}} Days</td>
+
+
+          <td class="border px-4 py-2">{{stage.email}}</td>
+
+          <td class="border px-4 py-2">{{stage.num}}</td>
+
+          <td class="border px-4 py-2">
+            <button (click) = "updateStage(stage.idsatge)" class="bg-black text-white active:bg-green-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button">
+              Modifier
+          </button>
+          <button (click) = "stageDetails(stage.idsatge)" class="bg-black text-white active:bg-green-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button">
+            Detail
+        </button>
+            <button (click) = "deleteStage(stage.idsatge)" class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button" >
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   <!-- <mat-paginator [pageSize]="[5,10,20]" showFirstLastButtons=""></mat-paginator>-->
+  </div>
+</div>
+
+
+
+

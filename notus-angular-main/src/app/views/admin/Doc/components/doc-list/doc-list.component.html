@@ -1,0 +1,79 @@
+<style>
+    form {
+      position: fixed;
+      top: 20px; /* Adjust this value to move the bar higher */
+      right: 150px;
+      z-index: 1000;
+    }
+    
+    input[type="text"] {
+      width: 250px; /* Adjust this value to make the input field shorter */
+    }
+  </style>
+  
+  
+  
+  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="rounded-t bg-white mb-0 px-6 py-6">
+      <div class="text-center flex justify-between">
+        <h6 class="text-blueGray-700 text-xl font-bold">doc Details</h6>
+        <button (click) = "addDoc()" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button" >
+          Ajouter un doc
+        </button>
+        
+      </div>
+    
+  
+    </div>
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+  
+      <table class="w-full mb-6">
+  
+        <thead>
+          <tr>
+            <th class="px-4 py-2"></th>
+  
+            <th class="px-4 py-2">id etudiant</th>
+            <th class="px-4 py-2">id Societe</th>
+            
+            <th class="px-4 py-2">Journal</th> <!-- Remove fixed width -->
+            <th class="px-4 py-2">Rapport</th> <!-- Remove fixed width -->
+            <th class="px-4 py-2">Attestation</th> <!-- Remove fixed width -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of docs let i = index">          
+            <td class="border px-4 py-2">{{ i + 1 }}</td>
+            <td class="border px-4 py-2">{{doc.id_etud}}</td>
+  
+
+            <td class="border px-4 py-2">{{doc.id_societ}} </td>
+  
+  
+            <td class="border px-4 py-2">{{doc.journal}}</td>
+  
+            <td class="border px-4 py-2">{{doc.rapport}}</td>
+            <td class="border px-4 py-2">{{doc.attestation}}</td>
+  
+            <td class="border px-4 py-2">
+              <button (click) = "updateDoc(doc.id_doc)" class="bg-black text-white active:bg-green-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button">
+                Modifier
+            </button>
+            <button (click) = "docDetails(doc.id_doc)" class="bg-black text-white active:bg-green-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button">
+              Detail
+          </button>
+              <button (click) = "deleteDoc(doc.id_doc)" class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150" type="button" >
+                Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     <!-- <mat-paginator [pageSize]="[5,10,20]" showFirstLastButtons=""></mat-paginator>-->
+    </div>
+  </div>
+  
+  
+  
+  
+  

@@ -13,6 +13,7 @@
     <ul class="flex flex-col lg:flex-row list-none mr-auto">
       <li class="flex items-center">
         <a
+        [routerLink]="['/stage']"
         class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
 
           href=""
@@ -21,6 +22,38 @@
             class="fas fa-briefcase text-lg leading-lg mr-2"
           ></i>
           Offres de stages
+        </a>
+      </li>
+    </ul>
+
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        [routerLink]="['/docetud']"
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-briefcase text-lg leading-lg mr-2"
+          ></i>
+          Documents Etudiant
+        </a>
+      </li>
+    </ul>
+
+    <ul class="flex flex-col lg:flex-row list-none mr-auto">
+      <li class="flex items-center">
+        <a
+        [routerLink]="['/stagesoc']"
+        class="hover:text-red-600 text-red-500 px-3 py-2 flex items-center text-xs uppercase font-bold "
+
+          href=""
+        >
+          <i
+            class="fas fa-briefcase text-lg leading-lg mr-2"
+          ></i>
+          Stage societe
         </a>
       </li>
     </ul>
