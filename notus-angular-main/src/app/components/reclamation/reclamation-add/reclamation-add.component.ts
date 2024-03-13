@@ -32,7 +32,7 @@ export class ReclamationAddComponent {
 
     const formData = this.reclamationForm.value;
 
-    // Adjust the form data to match your backend API expectations
+    
     formData.date = this.formatDate(new Date());
 
     this.http.post(`http://localhost:8083/reclamations/add`, formData)

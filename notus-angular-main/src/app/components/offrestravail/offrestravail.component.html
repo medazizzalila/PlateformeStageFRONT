@@ -9,6 +9,16 @@
     input[type="text"] {
       width: 250px; /* Adjust this value to make the input field shorter */
     }
+    .pagination{
+    padding: 20px 16px;
+    float: right ; 
+    font-size: 18px;
+}
+
+.pagination::ng-deep .ngx-pagination .current
+{
+    background: red
+}
   </style>
   
   <form class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3" (ngSubmit)="recherche()">
@@ -34,22 +44,26 @@
         <thead>
           <tr>
             <th class="px-4 py-2">#</th>
+            <th class="px-4 py-2">Titre</th>
             <th class="px-4 py-2">Description</th>
             <th class="px-4 py-2">Email</th>
             <th class="px-4 py-2">Societe</th>
             <th class="px-4 py-2">Num</th>
+            <th class="px-4 py-2">Localisation</th>
             <th class="px-4 py-2">Date Début</th>
             <th class="px-4 py-2">Date Fin</th>
             <th class="px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let offretravail of offretravaux; let i = index">
+          <tr *ngFor="let offretravail of offretravaux | paginate: { itemsPerPage: 2, currentPage: page, totalItems: totalLength }; let i = index">
             <td class="border px-4 py-2">{{ i + 1 }}</td>
+            <td class="border px-4 py-2">{{ offretravail.titre }}</td>
             <td class="border px-4 py-2">{{ offretravail.descrip }}</td>
             <td class="border px-4 py-2">{{ offretravail.email }}</td>
             <td class="border px-4 py-2">{{ offretravail.societe }}</td>
             <td class="border px-4 py-2">{{ offretravail.num }}</td>
+            <td class="border px-4 py-2">{{ offretravail.localisation }}</td>
           <td class="border px-4 py-2">{{ offretravail.datedebut }}</td>
           <td class="border px-4 py-2">{{ offretravail.datefin }}</td>
             <td class="border px-4 py-2">
@@ -63,6 +77,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="pagination"> 
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+      </div>
     </div>
   </div>
   

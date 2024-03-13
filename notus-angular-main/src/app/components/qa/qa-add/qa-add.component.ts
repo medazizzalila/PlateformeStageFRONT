@@ -22,7 +22,6 @@ export class QaAddComponent {
   }
 
   addQA() {
-    // Check if form is valid
     if (this.qaForm.invalid) {
       this.toastr.error('Veuillez remplir correctement tous les champs.', 'Erreur');
       return;

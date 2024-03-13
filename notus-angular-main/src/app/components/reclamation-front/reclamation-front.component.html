@@ -1,0 +1,106 @@
+<style>
+    .split-container {
+      display: flex;
+    }
+  
+    .image-container {
+      flex: 1;
+      padding: 20px;
+      margin-top: 100px;
+      margin-left: 120px;
+    }
+  
+    .introduction {
+      flex: 1;
+      padding: 20px;
+      margin-top: 200px;
+      margin-left: 120px;
+    }
+  
+    .form-container {
+      flex: 1;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin: 20px;
+      text-align: center;
+      width: 700px;
+      margin-left: auto; /* Center the form horizontally */
+      margin-right: auto; /* Center the form horizontally */
+      margin-top: 50px; /* Adjust the top margin as needed */
+    }
+  
+    .image-container img {
+      max-width: 100%;
+    }
+  
+    .introduction h2 {
+      font-weight: bold;
+      font-size: 24px;
+    }
+  
+    .introduction p {
+      font-weight: bold;
+    }
+  
+    .form-group label {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .form-group textarea,
+    .form-group input[type="file"] {
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .form-group button {
+      width: 100%;
+      max-width: 200px;
+      margin-top: 20px;
+    }
+  </style>
+  
+  <app-index-navbar></app-index-navbar>
+  
+  <div class="split-container">
+    <!-- Left column with introduction -->
+    <div class="introduction">
+      <div class="introduction-head">
+        <h2><b>Contactez nous</b></h2>
+      </div>
+      <p>Avec ESPRIT vous n’êtes jamais seul ! Il y a toujours une solution.</p>
+    </div>
+  
+    <!-- Right column with image -->
+    <div class="image-container">
+      <img src="/assets/img/reclamation.png" alt="Description de l'image">
+    </div>
+  </div>
+  
+  <!-- Form container -->
+  <div class="form-container">
+    <form [formGroup]="reclamationForm" (ngSubmit)="submit()">
+      <div class="form-group mb-4">
+        <label for="contenu" style="display: block; margin-bottom: 10px;">Contenu</label>
+        <textarea formControlName="contenu" id="contenu" class="form-control" style="padding-left: 20px;"></textarea>
+        <div *ngIf="reclamationForm.get('contenu').invalid && reclamationForm.get('contenu').touched" class="text-red-500">
+          <div *ngIf="reclamationForm.get('contenu').errors.required">Le contenu est requis.</div>
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label for="piece" style="display: block; margin-bottom: 10px;">Pièce</label>
+        <input formControlName="piece" id="piece" class="form-control" type="file" (change)="handleFileInput($event.target.files)">
+        <div *ngIf="reclamationForm.get('piece').invalid && reclamationForm.get('piece').touched" class="text-red-500">
+          <div *ngIf="reclamationForm.get('piece').errors.required">La pièce est requise.</div>
+        </div>
+      </div>
+      <div class="form-group button">
+        <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Envoyer</button>
+      </div>
+    </form>
+  </div>
+  

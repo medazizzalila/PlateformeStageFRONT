@@ -16,6 +16,8 @@ export class OffrestravailAddComponent {
   email: string;
   num: number;
   societe: string;
+  titre: string;
+  localisation: string;
   offretravailForm: FormGroup;
 
   constructor(private http: HttpClient, private toastr: ToastrService, private fb: FormBuilder) {
@@ -25,7 +27,9 @@ export class OffrestravailAddComponent {
         descrip: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         num: ['', [Validators.required]],
-        societe: ['', [Validators.required]]
+        societe: ['', [Validators.required]],
+        titre: ['', [Validators.required]],
+        localisation: ['', [Validators.required]]
       });
   }
 
@@ -51,7 +55,10 @@ export class OffrestravailAddComponent {
       descrip: '',
       email: '',
       num: '',
-      societe: ''
+      societe: '',
+      titre: '',
+      localisation:''
+
     });
   }
 }

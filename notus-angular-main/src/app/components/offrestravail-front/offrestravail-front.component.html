@@ -1,0 +1,145 @@
+<style>
+    .container {
+      display: flex;
+      justify-content: flex-start; /* Alignement du contenu sur la gauche */
+      align-items: center;
+      flex-direction: row; /* Changement de la direction de la disposition en ligne */
+      margin-top: 100px; /* Marge sur le dessus */
+      margin-left: 190px;
+    }
+    
+    .filter-sidebar {
+      border: 2px solid #000;
+      border-radius: 10px;
+      width: 200px; /* Largeur de la barre latérale */
+      background-color: rgba(255, 255, 255, 0.5); /* Arrière-plan blanc transparent */
+      padding: 20px;
+    }
+    
+    .offres-container {
+      display: flex;
+      flex-direction: column; /* Aligner les offres en colonne */
+      margin-left: 20px; /* Ajouter un espace entre la barre latérale et les offres */
+    }
+    
+    .offre-container {
+      display: flex;
+      border: 2px solid #000;
+      border-radius: 10px;
+      width: 700px; /* Largeur des offres */
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.5); /* Arrière-plan blanc transparent */
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .media-body {
+      flex: 1;
+    }
+    
+    .media-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .voir-plus-button {
+      background-color: #ff0000; /* Fond rouge */
+      color: #fff; /* Couleur de texte blanc */
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .voir-plus-button:hover {
+      background-color: #cc0000; /* Rouge plus sombre au survol */
+    }
+    
+    .company-button-container button {
+    display: block;
+}
+
+.offre-container {
+  position: relative;
+  /* le reste de votre CSS */
+}
+
+.company-location {
+  position: absolute;
+  bottom: 25px;
+  /* le reste de votre CSS */
+}
+.listing-item__info--item-company {
+  margin-right: 20px; /* Ajoutez de l'espace à droite */
+  /* le reste de votre CSS */
+}
+
+.listing-item__info--item-location {
+  margin-left: 150px; /* Ajoutez de l'espace à gauche */
+  /* le reste de votre CSS */
+}
+
+.pagination{
+    padding: 20px 16px;
+    float: right ; 
+    font-size: 18px;
+}
+
+.pagination::ng-deep .ngx-pagination .current
+{
+    background: red
+}
+    </style>
+    
+    <app-index-navbar></app-index-navbar>
+    
+    <div class="container">
+        <div class="filter-sidebar">
+            <h2>Filtrer :</h2>
+            <h3>par société : </h3>
+            <button (click)="filterByCompany('Toutes')">Toutes</button> <!-- Bouton pour afficher toutes les offres -->
+            <div class="company-button-container"> <!-- Div pour chaque bouton de société -->
+                <button *ngFor="let company of getUniqueCompanies()" (click)="filterByCompany(company)">{{ company }}</button> <!-- Bouton pour chaque société -->
+            </div>
+        </div>
+        
+      <div class="offres-container">
+        <div *ngFor="let offretravail of offretravaux | paginate: { itemsPerPage: 3, currentPage: page, totalItems: totalLength }; let i = index " class="offre-container">
+            <div class="media-body">
+                {{ offretravail.titre}}
+              
+              <div class="listing-item__desc hidden-sm hidden-xs">
+                {{ offretravail.descrip | slice:0:150}}{{ offretravail.descrip.length > 150 ? '...' : '' }}
+              </div>
+            </div>
+            <div class="media-right text-right">
+              <div class="date-container">
+                <div class="listing-item__date"> Date début :
+                  {{ offretravail.datedebut | date:'dd/MM/yyyy' }}
+                </div>
+                <div class="listing-item__desc visible-sm visible-xs"> Date fin : 
+                  {{ offretravail.datefin | date:'dd/MM/yyyy' }}
+                </div>
+              </div>
+              <button class="voir-plus-button">Voir Plus</button>
+            </div>
+            <div class="company-location">
+              <span class="listing-item__info--item listing-item__info--item-company">
+                {{ offretravail.societe }}
+              </span>
+              <span>
+                {{ offretravail.localisation }}
+              </span>
+            </div>
+            
+          </div>
+          
+      </div>
+      <div class="pagination"> 
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+      </div>
+    </div>
+   

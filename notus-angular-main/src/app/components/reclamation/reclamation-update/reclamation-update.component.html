@@ -30,11 +30,6 @@
             <option *ngFor="let state of staterecValues" [value]="state">{{ state }}</option>
           </select>
         </div>
-        <div class="form-group mb-4">
-          <label for="date" style="display: block; margin-bottom: 10px;">Date d'ajout</label>
-          <!-- Afficher la date par défaut mais désactivée -->
-          <input formControlName="date" id="date" class="form-control" type="text" disabled>
-        </div>
         <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Mettre à jour</button>
       </form>
     </div>

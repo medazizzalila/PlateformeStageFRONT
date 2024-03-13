@@ -20,7 +20,7 @@
   <div class="table-wrapper" id="table-wrapper">
     <!-- Loop through Q&A items -->
     <div class="table-content">
-      <div *ngFor="let qa of qas" class="qa-item">
+      <div *ngFor="let qa of qas | paginate: { itemsPerPage: 3, currentPage: page, totalItems: totalLength }"  class="qa-item">
         <div class="question" (click)="toggleResponse(qa)">
           <span>{{ qa.question }}</span>
           <!-- Add arrow icon for indicating the active state -->
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 

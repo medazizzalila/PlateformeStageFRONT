@@ -24,14 +24,14 @@ export class QaUpdateComponent implements OnInit {
       .subscribe((qa: any) => {
         this.question = qa.question;
         this.reponse = qa.reponse;
-        // Update form values after fetching data
+
         this.qaForm.patchValue({
           question: this.question,
           reponse: this.reponse
         });
       });
       
-      // Initialize the form with validators
+      
       this.qaForm = this.fb.group({
         question: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z]).+$')]],
         reponse: ['', [Validators.required, Validators.pattern('^.*[a-zA-Z0-9].*$')]]
@@ -39,13 +39,13 @@ export class QaUpdateComponent implements OnInit {
   }
 
   updateQA() {
-    // Check if form is valid
+    
     if (this.qaForm.invalid) {
       this.toastr.error('Veuillez remplir correctement tous les champs.', 'Erreur');
       return;
     }
 
-    // If form is valid, proceed with updating
+    
     const formData = this.qaForm.value;
 
     this.http.put(`http://localhost:8083/qa/update/${this.id}`, formData)

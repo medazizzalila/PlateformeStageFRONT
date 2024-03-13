@@ -9,8 +9,10 @@ import { MatPaginator } from "@angular/material/paginator";
 
 export class QaComponent implements OnInit {
   qas: any;
-  originalQas: any; // Store the original qas array
+  originalQas: any; 
   termeDeRecherche = '';
+  totalLength:any;
+  page:number=1;
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +26,7 @@ export class QaComponent implements OnInit {
     this.http.get("http://localhost:8083/qa/")
       .subscribe((data) => {
         this.qas = data;
-        this.originalQas = data; // St,ore the original qas array
+        this.originalQas = data; 
       });
   }
 
@@ -32,13 +34,13 @@ export class QaComponent implements OnInit {
     this.http.delete(`http://localhost:8083/qa/delete/${id}`)
       .subscribe((response: any) => {
         console.log("QA supprimée avec succès");
-        this.fetchQAs(); // Refresh the QAs after deletion
+        this.fetchQAs(); 
       });
   }
 
   recherche() {
     if (this.termeDeRecherche.trim() === '') {
-      this.qas = this.originalQas; // Reset to original qas array if search term is empty
+      this.qas = this.originalQas; 
     } else {
       this.qas = this.originalQas.filter((qa: any) =>
         qa.question.includes(this.termeDeRecherche) || qa.reponse.includes(this.termeDeRecherche)

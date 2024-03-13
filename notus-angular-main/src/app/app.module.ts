@@ -60,7 +60,6 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule, DatePipe } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ContenteditableModelDirective } from "./components/qa/contenteditableModel.component";
 import { QaFrontComponent } from "./components/qa-front/qa-front.component";
 import { ChatbotComponent } from "./components/chatbot/chatbot.component";
 import { ReclamationComponent } from "./components/reclamation/reclamation.component";
@@ -69,7 +68,9 @@ import { ReclamationAddComponent } from "./components/reclamation/reclamation-ad
 import { OffrestravailAddComponent } from "./components/offrestravail/offrestravail-add/offrestravail-add.component";
 import { OffrestravailUpdateComponent } from "./components/offrestravail/offrestravail-update/offrestravail-update.component";
 import { ReclamationUpdateComponent } from "./components/reclamation/reclamation-update/reclamation-update.component";
-
+import { OffrestravailFrontComponent } from "./components/offrestravail-front/offrestravail-front.component";
+import { ReclamationFrontComponent } from "./components/reclamation-front/reclamation-front.component";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,6 @@ import { ReclamationUpdateComponent } from "./components/reclamation/reclamation
     QaAddComponent,
     QaUpdateComponent,
     QaFrontComponent,
-    ContenteditableModelDirective,
     ChatbotComponent,
     ReclamationComponent,
     OffrestravailComponent,
@@ -118,13 +118,14 @@ import { ReclamationUpdateComponent } from "./components/reclamation/reclamation
     OffrestravailComponent,
     OffrestravailAddComponent,
     OffrestravailUpdateComponent,
-    ReclamationUpdateComponent
+    ReclamationUpdateComponent,
+    OffrestravailFrontComponent,
+    ReclamationFrontComponent
   ],
   exports: [
-    ContenteditableModelDirective
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule, FormsModule,MatFormFieldModule,
-    MatInputModule,MatButtonModule, ToastrModule.forRoot(),BrowserAnimationsModule, ReactiveFormsModule,MatPaginatorModule
+    MatInputModule,MatButtonModule, ToastrModule.forRoot(),BrowserAnimationsModule, ReactiveFormsModule,MatPaginatorModule,  NgxPaginationModule
  ],
   providers: [
     provideAnimationsAsync(),

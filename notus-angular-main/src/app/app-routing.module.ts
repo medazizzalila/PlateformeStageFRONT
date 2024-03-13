@@ -32,6 +32,8 @@ import { OffrestravailAddComponent } from "./components/offrestravail/offrestrav
 import { ReclamationAddComponent } from "./components/reclamation/reclamation-add/reclamation-add.component";
 import { OffrestravailUpdateComponent } from "./components/offrestravail/offrestravail-update/offrestravail-update.component";
 import { ReclamationUpdateComponent } from "./components/reclamation/reclamation-update/reclamation-update.component";
+import { OffrestravailFrontComponent } from "./components/offrestravail-front/offrestravail-front.component";
+import { ReclamationFrontComponent } from "./components/reclamation-front/reclamation-front.component";
 
 const routes: Routes = [
   // admin views
@@ -75,6 +77,8 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "", component: LandingComponent },
   { path: 'qa', component: QaFrontComponent },
+  { path: 'offrestravail', component: OffrestravailFrontComponent},
+  { path: 'reclamation', component: ReclamationFrontComponent} ,
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 

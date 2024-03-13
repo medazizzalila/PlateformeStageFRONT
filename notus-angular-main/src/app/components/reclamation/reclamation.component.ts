@@ -9,7 +9,8 @@ export class ReclamationComponent implements OnInit {
   reclamations: any;
   originalReclamations: any;
   termeDeRecherche = '';
-
+  totalLength:any;
+  page:number=1;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {

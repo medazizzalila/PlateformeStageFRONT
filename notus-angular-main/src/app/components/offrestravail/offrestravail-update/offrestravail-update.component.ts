@@ -13,10 +13,12 @@
     id: number;
     datedebut: Date;
     datefin: Date;
+    titre: string;
     descrip: string;
     email: string;
     num: number;
     societe: string;
+    localisation: string;
     offretravailForm: FormGroup;
 
     constructor (private http: HttpClient, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private fb: FormBuilder) {}
@@ -26,28 +28,36 @@
           .subscribe((ot: any) => {
             this.datedebut = ot.datedebut;
             this.datefin = ot.datefin;
+            this.titre = ot.titre;
             this.descrip = ot.descrip;
             this.email = ot.email;
             this.num = ot.num;
             this.societe = ot.societe;
-            // Update form values after fetching data
+            this.localisation = ot.localisation;
+            
             this.offretravailForm.patchValue({
               datedebut: this.datedebut,
               datefin: this.datefin,
+              titre:  this.titre,
               descrip: this.descrip,
               email:  this.email,
               num : this.num,
-              societe:  this.societe
+              societe:  this.societe,
+              
+              localisation:  this.localisation
             }); 
           });
 
           this.offretravailForm = this.fb.group({
             datedebut: [new Date(), [Validators.required]],
           datefin: [new Date(), [Validators.required]],
+          titre: ['', [Validators.required]],
           descrip: ['', [Validators.required]],
           email: ['', [Validators.required, Validators.email]],
           num: ['', [Validators.required]],
-          societe: ['', [Validators.required]]
+          societe: ['', [Validators.required]],
+          
+          localisation: ['', [Validators.required]]
           });
         }
         updateOT() {

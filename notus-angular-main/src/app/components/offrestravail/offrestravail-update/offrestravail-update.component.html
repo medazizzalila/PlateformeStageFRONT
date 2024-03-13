@@ -26,6 +26,13 @@
               </div>
             </div>
             <div class="form-group mb-4">
+              <label for="titre" style="display: block; margin-bottom: 10px;">Titre</label>
+              <textarea formControlName="titre" id="titre" class="form-control"></textarea>
+              <div *ngIf="offretravailForm.get('titre').invalid && offretravailForm.get('titre').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('titre').errors.required">Le titre est requis.</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
               <label for="descrip" style="display: block; margin-bottom: 10px;">Description</label>
               <textarea formControlName="descrip" id="descrip" class="form-control"></textarea>
               <div *ngIf="offretravailForm.get('descrip').invalid && offretravailForm.get('descrip').touched" class="text-red-500">
@@ -54,7 +61,13 @@
                 <div *ngIf="offretravailForm.get('societe').errors.required">La société est requise.</div>
               </div>
             </div>
-          
+            <div class="form-group mb-4">
+              <label for="localisation" style="display: block; margin-bottom: 10px;">Localisation</label>
+              <input formControlName="localisation" id="localisation" class="form-control" type="text">
+              <div *ngIf="offretravailForm.get('localisation').invalid && offretravailForm.get('localisation').touched" class="text-red-500">
+                <div *ngIf="offretravailForm.get('localisation').errors.required">La localisation est requise.</div>
+              </div>
+            </div>
             <button type="submit" class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">Mettre à jour</button>
         </form>
     </div>
