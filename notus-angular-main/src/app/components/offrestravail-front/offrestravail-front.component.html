@@ -92,6 +92,14 @@
 {
     background: red
 }
+
+.icon-container {
+    display: inline-block;
+    width: 20px; 
+    height: 20px; 
+    margin-right: 5px;
+}
+
     </style>
     
     <app-index-navbar></app-index-navbar>
@@ -109,7 +117,7 @@
       <div class="offres-container">
         <div *ngFor="let offretravail of offretravaux | paginate: { itemsPerPage: 3, currentPage: page, totalItems: totalLength }; let i = index " class="offre-container">
             <div class="media-body">
-                {{ offretravail.titre}}
+              <strong>{{ offretravail.titre}}</strong>
               
               <div class="listing-item__desc hidden-sm hidden-xs">
                 {{ offretravail.descrip | slice:0:150}}{{ offretravail.descrip.length > 150 ? '...' : '' }}
@@ -117,23 +125,26 @@
             </div>
             <div class="media-right text-right">
               <div class="date-container">
-                <div class="listing-item__date"> Date début :
-                  {{ offretravail.datedebut | date:'dd/MM/yyyy' }}
-                </div>
-                <div class="listing-item__desc visible-sm visible-xs"> Date fin : 
-                  {{ offretravail.datefin | date:'dd/MM/yyyy' }}
-                </div>
+                
               </div>
-              <button class="voir-plus-button">Voir Plus</button>
-            </div>
-            <div class="company-location">
-              <span class="listing-item__info--item listing-item__info--item-company">
-                {{ offretravail.societe }}
-              </span>
-              <span>
-                {{ offretravail.localisation }}
-              </span>
-            </div>
+              <a [href]="offretravail.lien" target="_blank" class="voir-plus-button">Voir Plus</a>
+                        </div>
+                        <div class="company-location">
+                          <div class="icon-container">
+                              <img src="assets/img/societe.png" alt="Localisation" class="icon">
+                          </div>
+                          <span class="listing-item__info--item listing-item__info--item-company">
+                              {{ offretravail.societe }}
+                          </span>
+                          <div class="icon-container">
+                              <img src="assets/img/localisation.png" alt="Société" class="icon">
+                          </div>
+                          <span>
+                              {{ offretravail.localisation }}
+                          </span>
+                      </div>
+                      
+                      
             
           </div>
           

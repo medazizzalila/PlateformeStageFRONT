@@ -20,9 +20,18 @@ export class OffrestravailFrontComponent {
   
   fetchOffretravaux() {
     this.http.get("http://localhost:8083/offretravail/")
-      .subscribe((data) => {
-        this.offretravaux = data;
-        this.originalOffretravaux = data; 
+      .subscribe((data: any) => {
+        // Ajoutez le lien à chaque offre d'emploi
+        this.offretravaux = data.map((offre: any) => {
+          return {
+            titre: offre.titre,
+            societe: offre.societe,
+            descrip: offre.descrip,
+            localisation: offre.localisation,
+            lien: offre.lien // Assurez-vous que votre API renvoie le lien pour chaque offre d'emploi
+          };
+        });
+        this.originalOffretravaux = this.offretravaux;
       });
   }
 
